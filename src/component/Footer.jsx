@@ -65,7 +65,7 @@ const Footer = () => {
                     </h2>
 
                     <ButtonPrimary
-                      href="mailto:kushagragupta909@gmail.com"
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=kushagragupta909@gmail.com"
                       target="_blank"
                       label="Start project"
                       icon="chevron_right"

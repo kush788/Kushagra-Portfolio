@@ -1,13 +1,11 @@
-import { ReactLenis } from 'lenis/react'
+import { useEffect, useState } from "react";
+import { ReactLenis } from 'lenis/react';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-/**
- *  Components
- */
 import Header from "./component/Header";
 import Hero from "./component/Hero";
 import About from "./component/About";
@@ -17,19 +15,27 @@ import Contact from "./component/Contact";
 import Footer from "./component/Footer";
 
 const App = () => {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Trigger fade-in on mount
+    setLoaded(true);
+  }, []);
+
   return (
     <ReactLenis root>
-      {/* 🔹 Background layer */}
-      <div class="spline-container fixed top-0 left-0 w-full h-full -z-10">
-  <iframe
-    src="https://my.spline.design/spaceparticlesanimation-UGnU6SB7nUK6sFI6N5WzasEx"
-    frameborder="0"
-    class="w-full h-full"
-  ></iframe>
-</div>
+      {/* Background layer */}
+      <div className={`spline-container fixed top-0 left-0 w-full h-full -z-10 ${loaded ? 'loaded' : ''}`}>
+        <iframe
+          src="https://my.spline.design/untitled-f680ea749fc30deeb5eff5a8b15b2f63"
+          frameBorder="0"
+          width="100%"
+          height="100%"
+          id="aura-spline"
+        ></iframe>
+      </div>
 
-
-      {/* 🔹 Foreground content */}
+      {/* Foreground content */}
       <div className="relative z-10">
         <Header />
         <main>
@@ -42,7 +48,7 @@ const App = () => {
         <Footer />
       </div>
     </ReactLenis>
-  )
-}
+  );
+};
 
 export default App;
